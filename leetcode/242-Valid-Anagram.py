@@ -4,7 +4,6 @@ def minDeletionSize(self, strs: List[str]) -> int:
         for j in range(len(strs)-1):
             if ord(strs[j][i])>ord(strs[j+1][i]):
                 count+=1
-                print(i,j)
                 break
     
     return count
