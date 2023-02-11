@@ -1,0 +1,21 @@
+# Difficulty : Medium
+# Tag : Sliding Window, Prefix Sum, Binary Search, String
+def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+    def slidingWindow(ansKey: str, k:int, anchor: str):
+        # Define Variable
+        left, right = 0,0
+        # iterate toward input 
+        while right<len(ansKey):
+            # expanding the window
+            if ansKey[right]!=anchor:
+                k-=1
+            # check if negative, move left -> left + 1
+            if k<0:
+                # if ansKey[right]!=anchor -> 
+                if ansKey[left]!=anchor:
+                    k+=1
+                left+=1
+            right+=1
+        return len(ansKey) - left
+
+    return max(slidingWindow(answerKey, k, 'T'), slidingWindow(answerKey, k, 'F'))
