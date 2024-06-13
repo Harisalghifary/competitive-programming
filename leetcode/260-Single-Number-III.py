@@ -14,3 +14,20 @@ def singleNumber(self, nums: List[int]) -> List[int]:
     #         res.append(num)
     
     # return res
+
+    xor = i = 0
+    if len(nums)==2:
+        return nums
+
+    for num in nums:
+        xor^=num
+
+    bitSet = xor&-xor
+    a = b = 0
+    for num in nums:
+        if num & bitSet == 0:
+            a ^= num
+        else:
+            b ^= num
+    # b = xor^a
+    return [a,b]
